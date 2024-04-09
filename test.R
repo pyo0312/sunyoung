@@ -4,8 +4,9 @@ rm(list=ls())
 ## shape file: https://www.vworld.kr/dtmk/dtmk_ntads_s002.do?dsId=30604
 ## birth rate: kosis<시군구/합계출산율, 모의 연령별 출산율
 
-## Set working directory
-setwd("~/Desktop/project/birth_rate_map")
+## Set working directory (in my Github repository)
+setwd("/Users/sunyoungpyo/sunyoung")
+getwd()
 
 ## Load the birth rate data
 library(readxl)
