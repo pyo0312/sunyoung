@@ -145,7 +145,8 @@ library(ggplot2)
 
 grid_seoul %>% ggplot(aes(fill=total_birth_rate)) +
   geom_sf(data = grid_seoul , aes(geometry = geometry)) +
-  scale_fill_gradient(low="white", high="blue")
+  scale_fill_gradient(low="white", high="blue") +
+  ggtitle("Birth rate in Seoul in 2022")
 
 ## add tooltip on a map
 ## to show "district name: birth rate", I created the 'text' object as below
@@ -159,8 +160,8 @@ library(plotly)
 grid_seoul$TEXT<-paste0(grid_seoul$SIG_KOR_NM, ": ", grid_seoul$total_birth_rate)
 
 p1<-grid_seoul %>% ggplot(aes(fill=total_birth_rate)) +
-  geom_sf(data = grid_seoul , aes(geometry = geometry, text=TEXT)) +
-  scale_fill_gradient(low="white", high="blue")
+  geom_sf(data = grid_seoul, aes(geometry = geometry, text=TEXT)) +
+  scale_fill_gradient(low="white", high="blue") 
 
 ggplotly(p1, tooltip = "TEXT") %>% 
   style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
@@ -176,7 +177,6 @@ ggplotly(p1, tooltip = "TEXT") %>%
 
 ggplotly(p1, tooltip = "TEXT") %>% 
   style(hoverlabel = list(bgcolor = "white", hoverinfo = "TEXT", hoveron = "points"))
+# above code works correctly
 
 ## useful source about labeling in map: https://tmieno2.github.io/R-as-GIS-for-Economists/geom-sf.html
-
-
